@@ -1,3 +1,8 @@
+# Gary Gregg, INFO 474, Assignment #1
+#
+# 27 January, 2017: Added base 10 log transformation of MIC values, and
+# adjusted title to reflect the change.
+
 # The 'lattice' library is required for a levelplot.
 library("lattice")
 
@@ -69,7 +74,7 @@ rev_gram_staining <- rev(gram_staining)
 
 # Set graph parameters, and create the levelplot.
 par(mar=c(3,4,2,2))
-levelplot(Z ~ X*Y,
+levelplot(log10(Z) ~ X*Y,
           data=data,
           xlab="Antibiotic",
           ylab="Bacteria (Gram Stained in Bold Dark Blue)",
@@ -81,4 +86,4 @@ levelplot(Z ~ X*Y,
           scales=list(y=list(col=ifelse(rev_gram_staining, "darkblue", "black"),
                              fontface=ifelse(rev_gram_staining, "bold", "plain"))),
           col.regions = heat.colors(100)[length(heat.colors(100)):1],
-          main="Minimum Inhibitory Concentration (MIC)")
+          main="Minimum Inhibitory Concentration (MIC) in Base 10 Log Scale")
