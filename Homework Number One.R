@@ -86,4 +86,14 @@ levelplot(log10(Z) ~ X*Y,
           scales=list(y=list(col=ifelse(rev_gram_staining, "darkblue", "black"),
                              fontface=ifelse(rev_gram_staining, "bold", "plain"))),
           col.regions = heat.colors(100)[length(heat.colors(100)):1],
+          
+          colorkey=list(at=as.numeric(factor(c(c(sqrt(10)^(-6:6))))),
+                        labels=as.character(c( "0.001", "",
+                                               "0.01", "",
+                                               "0.1", "",
+                                               "1", "",
+                                               "10", "",
+                                               "100", "",
+                                               "1000"))),
+          
           main="Minimum Inhibitory Concentration (MIC) in Base 10 Log Scale")
